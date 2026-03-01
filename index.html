@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio — Youssef Berrada — IA & Data Science"
+    />
+    <title>Youssef Berrada — Portfolio IA & Data</title>
+
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: #0f1730;
+        --text: #e8ecff;
+        --muted: #aeb7e6;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #6ea8ff;
+        --accent2: #a56eff;
+        --shadow: 0 14px 45px rgba(0, 0, 0, 0.38);
+        --radius: 18px;
+        --max: 1100px;
+        --mono:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        --sans:
+          ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        color: var(--text);
+        background:
+          radial-gradient(
+            1000px 600px at 10% 0%,
+            rgba(110, 168, 255, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 90% 10%,
+            rgba(165, 110, 255, 0.16),
+            transparent 55%
+          ),
+          radial-gradient(
+            700px 450px at 60% 90%,
+            rgba(110, 255, 210, 0.08),
+            transparent 55%
+          ),
+          var(--bg);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 28px 18px 70px;
+      }
+
+      /* NAV */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        backdrop-filter: blur(10px);
+        background: linear-gradient(
+          to bottom,
+          rgba(11, 16, 32, 0.72),
+          rgba(11, 16, 32, 0.15)
+        );
+        border-bottom: 1px solid var(--line);
+      }
+      .navin {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+      }
+      .logo {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        box-shadow: 0 10px 26px rgba(110, 168, 255, 0.18);
+      }
+      .links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .links a {
+        padding: 8px 10px;
+        border-radius: 12px;
+        color: var(--muted);
+        border: 1px solid transparent;
+      }
+      .links a:hover {
+        color: var(--text);
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        transition:
+          transform 0.12s ease,
+          background 0.12s ease,
+          border-color 0.12s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+      .btn.primary {
+        border: 0;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        box-shadow: 0 14px 35px rgba(110, 168, 255, 0.18);
+      }
+
+      /* CARDS */
+      .card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      /* HERO SPLIT */
+      .hero {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 18px;
+        margin-top: 22px;
+      }
+      @media (max-width: 880px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .photoCard {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .photo {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transform: scale(1.02);
+      }
+      .photoMeta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .pill {
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.03);
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .introCard {
+        padding: 22px;
+      }
+      h1 {
+        margin: 10px 0 10px;
+        font-size: clamp(28px, 4vw, 44px);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.7;
+        margin: 0 0 16px;
+        max-width: 65ch;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .code {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.25);
+        font-family: var(--mono);
+        color: #dfe6ff;
+        font-size: 12px;
+        overflow: auto;
+      }
+
+      .section {
+        margin-top: 26px;
+      }
+      .section h2 {
+        font-size: 18px;
+        margin: 0 0 10px;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .section p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .tag {
+        font-size: 13px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+      }
+
+      .cols {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      @media (max-width: 720px) {
+        .cols {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      @media (max-width: 860px) {
+        .projects {
+          grid-template-columns: 1fr;
+        }
+      }
+      .proj {
+        padding: 16px;
+      }
+      .proj h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+      .meta {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .proj p {
+        margin: 10px 0 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .proj .row {
+        justify-content: space-between;
+      }
+      .proj .mini {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .mini a {
+        color: var(--muted);
+      }
+      .mini a:hover {
+        color: var(--text);
+        text-decoration: underline;
+      }
+
+      .footer {
+        margin-top: 34px;
+        padding: 18px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      /* reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+      .reveal.on {
+        opacity: 1;
+        transform: none;
+      }
+      /* =========================
+   SKILLS (version stylée + verticale + hover)
+========================= */
+
+      .skillsWrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .skillsWrap {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .skillCard {
+        padding: 18px;
+      }
+
+      .skillHeader {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .skillHeader h3 {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .skillHeader p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 13px;
+        max-width: 55ch;
+      }
+
+      .skillList {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .skillItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        padding: 12px 12px;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+
+        transition:
+          transform 0.14s ease,
+          border-color 0.14s ease,
+          background 0.14s ease;
+      }
+
+      .skillItem:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .skillLeft {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .skillIcon {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          135deg,
+          rgba(110, 168, 255, 0.2),
+          rgba(165, 110, 255, 0.18)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        flex: 0 0 auto;
+      }
+
+      .skillName {
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .skillHint {
+        color: var(--muted);
+        font-size: 12px;
+        font-family: var(--mono);
+        flex: 0 0 auto;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.18);
+      }
+
+      .skillNote {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 12px;
+        line-height: 1.6;
+      }
+      /* =========================
+   SUCCESS MESSAGE
+========================= */
+      .successMessage {
+        margin-top: 14px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(110, 255, 210, 0.4);
+        background: rgba(110, 255, 210, 0.08);
+        color: #bfffe8;
+        display: none;
+        font-size: 14px;
+      }
+      /* =========================
+   SECTION TITLES (centré + premium)
+========================= */
+
+      .section h2 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 30px;
+        position: relative;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* Ligne décorative sous le titre */
+      .section h2::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        margin: 14px auto 0;
+        border-radius: 4px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        box-shadow: 0 4px 18px rgba(110, 168, 255, 0.35);
+      }
+      .section h2 {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /* =========================
+   CONTACT FORM
+========================= */
+      .formGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+      @media (max-width: 720px) {
+        .formGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .input,
+      .textarea {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        outline: none;
+        transition:
+          border-color 0.14s ease,
+          background 0.14s ease,
+          transform 0.14s ease;
+      }
+
+      .input:focus,
+      .textarea:focus {
+        border-color: rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .textarea {
+        min-height: 140px;
+        resize: vertical;
+        grid-column: 1 / -1;
+      }
+
+      .formActions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+
+      .formHint {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <script>
+    const form = document.getElementById("contactForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const data = new FormData(form);
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        form.reset();
+        successMessage.style.display = "block";
+        successMessage.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <body>
+    <header class="nav">
+      <div class="navin">
+        <div class="brand">
+          <div class="logo"></div>
+          <div>
+            <div style="font-weight: 800">Youssef Berrada</div>
+            <div style="color: var(--muted); font-size: 12px">
+              Étudiant Ingénieur • IA & Data Science
+            </div>
+          </div>
+        </div>
+        <!-- =========================  NAVBAR (menu du haut)    ========================= -->
+
+        <nav class="links">
+          <a href="#about">À propos</a>
+          <a href="#skills">Compétences</a>
+          <a href="#projects">Projets</a>
+          <a href="#contact" class="btn">Contact</a>
+          <a
+            class="btn primary"
+            href="CV professionnel YOussef.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >📄 CV</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <!-- =========================HERO (Photo à gauche + Intro à droite)  - Photo: .photoCard Intro: .introCard   ========================= -->
+      <section class="hero">
+        <div class="card photoCard reveal">
+          <div class="photo">
+            <img src="youssef.png" alt="Photo de Youssef Berrada" />
+          </div>
+          <div class="photoMeta">
+            <span class="pill">📍 Maroc</span>
+            <span class="pill">🎓 4ème année</span>
+            <span class="pill">🧠 IA & Data</span>
+          </div>
+          <div class="row">
+            <a
+              class="btn"
+              href="https://github.com/youssefberr03"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub</a
+            >
+            <a
+              class="btn"
+              href="https://www.linkedin.com/in/berrada-youssef-b2959b249/"
+              target="_blank"
+              rel="noreferrer"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+
+        <div class="card introCard reveal">
+          <span class="pill"
+            >🚀 Disponible pour stage / alternance / projets</span
+          >
+          <h1>
+            Salut, je suis
+            <span
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--accent),
+                  var(--accent2)
+                );
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+              "
+              >Youssef Berrada</span
+            >.
+          </h1>
+
+          <p class="sub">
+            Étudiant en <b>Intelligence Artificielle</b> et
+            <b>Science des Données</b>. Je suis enthousiaste à l’idée
+            d’apprendre en continu et de transformer mes connaissances en
+            <b>projets concrets</b>. <br /><br />
+            <b>Ma détermination :</b> construire des solutions IA utiles, bien
+            structurées, et prêtes à être déployées — en explorant de nouvelles
+            idées, en expérimentant, puis en livrant des résultats.
+          </p>
+
+          <div class="row">
+            <a class="btn primary" href="#projects">Voir mes projets</a>
+            <a class="btn" href="mailto:Berradayoussef320@gmail.com"
+              >📩 Berradayoussef320@gmail.com</a
+            >
+            <a class="btn" href="#contact">Me contacter</a>
+          </div>
+
+          <div class="code">
+            Focus: ML • NLP • Data Pipelines • APIs • MLOps (bases) | Stack:
+            Python • SQL • FastAPI • Docker • Git
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section reveal">
+        <h2>👋 À propos</h2>
+        <div class="card" style="padding: 18px">
+          <p>
+            Je suis <b>Youssef Berrada</b>, étudiant en 4ème année du cycle
+            d’ingénieur en
+            <b>Intelligence Artificielle et Science des Données</b> à l’EMSI
+            Rabat. Je suis titulaire d’une
+            <b>Licence en Génie Logiciel</b> obtenue à la FST, où j’ai développé
+            une solide maîtrise des fondamentaux en programmation, algorithmique
+            et conception logicielle. Mon parcours m’a permis d’acquérir une
+            expérience en <b>développement Java</b> et en
+            <b>développement web</b>, me donnant une vision complète du cycle de
+            vie d’une application, de la conception à l’implémentation.
+            Aujourd’hui, je m’oriente vers la conception de systèmes
+            intelligents capables d’exploiter la donnée pour créer de la valeur.
+            Je m’intéresse particulièrement au <b>Machine Learning</b>, à
+            l’analyse de données et au développement de solutions IA applicables
+            à des problématiques concrètes. Déterminé et passionné, mon objectif
+            est de continuer à progresser dans le domaine de l’IA et de la Data
+            Science, en réalisant des projets ambitieux, bien structurés et
+            techniquement solides.
+          </p>
+          <div class="tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Data Engineering</span>
+            <span class="tag">APIs</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="section reveal">
+        <h2>🧰 Compétences</h2>
+
+        <div class="skillsWrap">
+          <!-- DATA & IA -->
+          <div class="card skillCard">
+            <div class="skillHeader">
+              <div>
+                <h3>Data & IA</h3>
+                <p>
+                  De la préparation de données à l’entraînement et l’évaluation
+                  des modèles.
+                </p>
+              </div>
+              <span class="pill">Focus IA</span>
+            </div>
+
+            <div class="skillList">
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">🐍</div>
+                  <div class="skillName">Python (Data/ML)</div>
+                </div>
+                <div class="skillHint">pandas • numpy</div>
+              </div>
+
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">📈</div>
+                  <div class="skillName">Machine Learning</div>
+                </div>
+                <div class="skillHint">scikit-learn</div>
+              </div>
+
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">🧠</div>
+                  <div class="skillName">Deep Learning</div>
+                </div>
+                <div class="skillHint">PyTorch / TF</div>
+              </div>
+
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">💬</div>
+                  <div class="skillName">NLP</div>
+                </div>
+                <div class="skillHint">text • embeddings</div>
+              </div>
+
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">👁️</div>
+                  <div class="skillName">Computer Vision</div>
+                </div>
+                <div class="skillHint">CNN • images</div>
+              </div>
+            </div>
+
+            <div class="skillNote">
+              Objectif : construire des modèles robustes et les intégrer dans
+              des projets concrets.
+            </div>
+          </div>
+
+          <!-- DEV & DEPLOIEMENT -->
+          <div class="card skillCard">
+            <div class="skillHeader">
+              <div>
+                <h3>Développement & Déploiement</h3>
+                <p>
+                  Créer des APIs, structurer des projets et livrer des solutions
+                  prêtes à l’emploi.
+                </p>
+              </div>
+              <span class="pill">Focus Produit</span>
+            </div>
+
+            <div class="skillList">
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">☕</div>
+                  <div class="skillName">Java</div>
+                </div>
+                <div class="skillHint">OOP • clean code</div>
+              </div>
+
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">🗄️</div>
+                  <div class="skillName">SQL</div>
+                </div>
+                <div class="skillHint">queries • data</div>
+              </div>
+
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">⚡</div>
+                  <div class="skillName">FastAPI / Flask</div>
+                </div>
+                <div class="skillHint">REST • docs</div>
+              </div>
+
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">🧰</div>
+                  <div class="skillName">Git / GitHub</div>
+                </div>
+                <div class="skillHint">versioning</div>
+              </div>
+
+              <div class="skillItem">
+                <div class="skillLeft">
+                  <div class="skillIcon">🐳</div>
+                  <div class="skillName">Docker</div>
+                </div>
+                <div class="skillHint">containers</div>
+              </div>
+            </div>
+
+            <div class="skillNote">
+              Objectif : livrer des projets propres, testables, et facilement
+              déployables.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section reveal">
+        <h2>🧪 Projets</h2>
+        <div class="projects">
+          <article class="card proj">
+            <div class="meta">ML • Classification</div>
+            <h3>🔎 Projet 1 — Détection (Classification)</h3>
+            <p>
+              Pipeline complet : nettoyage, features, entraînement, métriques
+              (precision/recall/F1), puis export du modèle + README clair.
+            </p>
+            <div class="row">
+              <div class="mini">
+                <span class="tag">Python</span
+                ><span class="tag">scikit-learn</span>
+              </div>
+              <div class="mini">
+                <a
+                  href="https://github.com/TON_GITHUB/projet1"
+                  target="_blank"
+                  rel="noreferrer"
+                  >GitHub</a
+                >
+                <a href="#" target="_blank" rel="noreferrer">Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card proj">
+            <div class="meta">NLP • API</div>
+            <h3>💬 Projet 2 — API NLP (Résumé/Classement)</h3>
+            <p>
+              API FastAPI avec validation, endpoints, logs et Docker. Objectif :
+              livrer un service propre et réutilisable.
+            </p>
+            <div class="row">
+              <div class="mini">
+                <span class="tag">FastAPI</span><span class="tag">NLP</span
+                ><span class="tag">Docker</span>
+              </div>
+              <div class="mini">
+                <a
+                  href="https://github.com/TON_GITHUB/projet2"
+                  target="_blank"
+                  rel="noreferrer"
+                  >GitHub</a
+                >
+                <a href="#" target="_blank" rel="noreferrer">Doc API</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card proj">
+            <div class="meta">Data Viz • Dashboard</div>
+            <h3>📊 Projet 3 — Dashboard Analytics</h3>
+            <p>
+              Visualisation interactive de KPIs, tendances, segments + filtres.
+              Utile pour une lecture rapide et une décision métier.
+            </p>
+            <div class="row">
+              <div class="mini">
+                <span class="tag">Streamlit</span><span class="tag">SQL</span>
+              </div>
+              <div class="mini">
+                <a
+                  href="https://github.com/TON_GITHUB/projet3"
+                  target="_blank"
+                  rel="noreferrer"
+                  >GitHub</a
+                >
+                <a href="#" target="_blank" rel="noreferrer">Live</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card proj">
+            <div class="meta">MLOps (bases)</div>
+            <h3>⚙️ Projet 4 — Training reproductible</h3>
+            <p>
+              Structure propre : scripts, config, requirements, versioning.
+              Objectif : reproductibilité et clarté (niveau pro).
+            </p>
+            <div class="row">
+              <div class="mini">
+                <span class="tag">Git</span><span class="tag">Docker</span>
+              </div>
+              <div class="mini">
+                <a
+                  href="https://github.com/TON_GITHUB/projet4"
+                  target="_blank"
+                  rel="noreferrer"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section reveal">
+        <h2>📫 Contact</h2>
+
+        <div class="card" style="padding: 18px">
+          <p>
+            Tu peux me contacter pour une opportunité (stage/alternance), un
+            projet, ou une collaboration. Je réponds rapidement par email.
+          </p>
+
+          <!-- ✅ Formulaire (Formspree) -->
+          <!-- 1) Crée un compte Formspree (gratuit)
+         2) Crée un nouveau form
+         3) Remplace l'URL action ci-dessous par la tienne -->
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/mqedolow"
+            method="POST"
+            style="margin-top: 14px"
+          >
+            <div id="successMessage" class="successMessage">
+              ✅ Merci ! Votre message a bien été envoyé. Je vous répondrai
+              rapidement.
+            </div>
+            <div class="formGrid">
+              <input
+                class="input"
+                type="text"
+                name="name"
+                placeholder="Votre nom"
+                required
+              />
+              <input
+                class="input"
+                type="email"
+                name="email"
+                placeholder="Votre email"
+                required
+              />
+              <textarea
+                class="textarea"
+                name="message"
+                placeholder="Votre message..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="formActions">
+              <button class="btn primary" type="submit">Envoyer</button>
+              <span class="formHint">
+                Ou contacte-moi directement :
+                <a
+                  href="mailto:Berradayoussef320@gmail.com"
+                  style="text-decoration: underline"
+                  >Berradayoussef320@gmail.com</a
+                >
+              </span>
+            </div>
+          </form>
+
+          <div class="row" style="margin-top: 14px">
+            <a
+              class="btn"
+              href="https://www.linkedin.com/in/TON_LINKEDIN"
+              target="_blank"
+              rel="noreferrer"
+              >LinkedIn</a
+            >
+            <a
+              class="btn"
+              href="https://github.com/TON_GITHUB"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Youssef Berrada — Portfolio</span>
+        <span style="font-family: var(--mono)"
+          >One-page • HTML/CSS • Hosting gratuit</span
+        >
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("on");
+          });
+        },
+        { threshold: 0.12 },
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
